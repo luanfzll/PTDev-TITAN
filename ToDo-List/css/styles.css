@@ -11,12 +11,16 @@ body {
     background-image: url('../img/wallpaper1.jpg');
     background-position: center;
     background-size: cover;
+    min-height: 100vh;
+    background-attachment: fixed;
+    padding-bottom: 3rem;
+    padding-top: 3rem;
 }
 
 button {
     background-color: #fdfdfd;
-    color: #102f5e;
-    border: 2px solid #102f5e;
+    color: #6600cc;
+    border: 2px solid #6600cc;
     padding: .3rem .6rem;
     font-size: 1rem;
     cursor: pointer;
@@ -27,7 +31,7 @@ button {
 }
 
 button:hover {
-    background-color: #102f5e;
+    background-color: #6600cc;
     color: #fff;
 }
 
@@ -36,7 +40,7 @@ button:hover > i {
 }
 
 button i {
-    color: #102f5e;
+    color: #6600cc;
     font-weight: bold;
     pointer-events: none;
 }
@@ -52,7 +56,7 @@ input, select {
 /* Header */
 .todo-container {
     max-width: 450px;
-    margin: 3rem auto;
+    margin: 0 auto;
     background-color: #fdfdfd;
     padding: 1.5rem;
     border-radius: 15px;
@@ -85,6 +89,7 @@ input, select {
 
 #cancel-edit-btn {
     margin-top: 1rem;
+    font-weight: bold;
 }
 
 /* Toolbar */
@@ -132,13 +137,27 @@ input, select {
     justify-content: space-around;
     align-items: center;
     padding: 1rem;
-    border-bottom: 1px solid #ddd;
     transition: .3s;
+    margin-top: 0.5rem;
+    position: relative;
+    margin-bottom: 1rem
+}
+
+.todo::after {
+    content: "";           
+    position: absolute;    
+    bottom: -0.5rem;       
+    left: 0;
+    width: 100%;           
+    height: 1px;           
+    background-color: #ccc; 
 }
 
 .todo h3 {
     flex: 1;
     font-size: .9rem;
+    word-break: break-all;
+    overflow-wrap: break-word;
 }
 
 .todo button {
@@ -146,11 +165,11 @@ input, select {
 }
 
 .done {
-    background-color: #395169;
+    background-color: #8000ff;
+    border-radius: 10px;
 }
 
 .done h3 {
     color: #fff;
     text-decoration: line-through;
-    font-style: italic;
 }
