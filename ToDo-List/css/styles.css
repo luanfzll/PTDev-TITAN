@@ -56,6 +56,7 @@ input, select {
 /* Header */
 .todo-container {
     max-width: 450px;
+    width: 90%;
     margin: 0 auto;
     background-color: #fdfdfd;
     padding: 1.5rem;
