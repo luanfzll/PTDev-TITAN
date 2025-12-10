@@ -1,6 +1,6 @@
 //Seleção de elementos
-const apiKey = "3c14ad7f74f22fe25409987eff325dcc";
-const apiUnsplashKey = "Qdgtb1ZdI3M4IIGWCgRkTLcmd_jSk2_kcqf39Xd_Oy0";
+const apiKey = config.API_KEY;
+const apiUnsplashKey = config.UNSPLASH_KEY;
 const apiCountryURL = "https://flagcdn.com/16x12/br.png";
 
 const cityInput = document.querySelector("#city-input");
