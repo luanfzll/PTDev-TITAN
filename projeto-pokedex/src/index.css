@@ -1,0 +1,393 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+@import "tailwindcss";
+
+@layer components {
+  .capitalize-force {
+    text-transform: capitalize !important;
+    transform: translateZ(0);
+  }
+}
+
+@theme {
+  /* fonte padrão do projeto */
+  --font-sans: "Inter", sans-serif;
+
+  /* cores padrão */
+  --color-pokedex-yellow: #ffe892;
+  --color-pokedex-blue: #d6e9ff;
+  --color-title-yellow: #dbad01;
+  --color-title-blue: #3d7dca;
+
+  --color-grass-categorie: #57c101cc;
+  --color-fire-categorie: #e06500cc;
+  --color-water-categorie: #3c77ffcc;
+  --color-poison-categorie: #8d03a3cc;
+  --color-bug-categorie: #ada131cc;
+  --color-normal-categorie: #868c6ccc;
+  --color-electric-categorie: #f0c000cc;
+  --color-ground-categorie: #d9982ecc;
+  --color-fairy-categorie: #dc7272cc;
+  --color-fighting-categorie: #e60000cc;
+  --color-psychic-categorie: #fe4da5cc;
+  --color-rock-categorie: #5e4f4fcc;
+  --color-ghost-categorie: #2c1a7acc;
+  --color-ice-categorie: #009ebecc;
+  --color-steel-categorie: #887777cc;
+  --color-flying-categorie: #955cb9cc;
+  --color-dragon-categorie: #5b0fbfcc;
+}
+
+/* borda dos cards */
+
+@utility bg-gradient-grass {
+  background-image: linear-gradient(to top, #2ba379, #a9d287cc);
+}
+
+@utility bg-gradient-fire {
+  background-image: linear-gradient(to top, #ed7819, #ffc973);
+}
+
+@utility bg-gradient-water {
+  background-image: linear-gradient(to top, #4492f2, #a6ccfb);
+}
+
+@utility bg-gradient-poison {
+  background-image: linear-gradient(to top, #ad55ad, #ff9dff);
+}
+
+@utility bg-gradient-bug {
+  background-image: linear-gradient(to top, #cfc913, #e2df92);
+}
+
+@utility bg-gradient-normal {
+  background-image: linear-gradient(to top, #7e8c6c, #cbd0c4);
+}
+
+@utility bg-gradient-electric {
+  background-image: linear-gradient(to top, #f9dd61, #fff3bd);
+}
+
+@utility bg-gradient-ground {
+  background-image: linear-gradient(to top, #d4a25c, #fed8a4);
+}
+
+@utility bg-gradient-fairy {
+  background-image: linear-gradient(to top, #ff7c7c, #ffcbcb);
+}
+
+@utility bg-gradient-fighting {
+  background-image: linear-gradient(to top, #b22828, #d17474);
+}
+
+@utility bg-gradient-psychic {
+  background-image: linear-gradient(to top, #d00080, #ff8dd3);
+}
+
+@utility bg-gradient-rock {
+  background-image: linear-gradient(to top, #707070, #d2d2d2);
+}
+
+@utility bg-gradient-ghost {
+  background-image: linear-gradient(to top, #4b16c6, #9981d1);
+}
+
+@utility bg-gradient-ice {
+  background-image: linear-gradient(to top, #00ddff, #b5f5ff);
+}
+
+@utility bg-gradient-steel {
+  background-image: linear-gradient(
+    to top,
+    #2ba379,
+    #a9d287
+  ); /* não tem no figma */ /* não tem no figma */
+}
+
+@utility bg-gradient-flying {
+  background-image: linear-gradient(
+    to top,
+    #2ba379,
+    #a9d287
+  ); /* não tem no figma */ /* não tem no figma */
+}
+
+@utility bg-gradient-dragon {
+  background-image: linear-gradient(to top, #9b7fff, #cec0ff);
+}
+
+/* card background */
+
+@utility bg-radial-grass {
+  background-image: radial-gradient(
+    ellipse 100% 75% at center,
+    #4bba93 0%,
+    white 70%
+  );
+}
+
+@utility bg-radial-fire {
+  background-image: radial-gradient(
+    ellipse 100% 75% at center,
+    #ee9045 0%,
+    white 70%
+  );
+}
+
+@utility bg-radial-water {
+  background-image: radial-gradient(
+    ellipse 100% 75% at center,
+    #659de3 0%,
+    white 70%
+  );
+}
+
+@utility bg-radial-poison {
+  background-image: radial-gradient(
+    ellipse 100% 75% at center,
+    #de8cde 0%,
+    white 70%
+  );
+}
+
+@utility bg-radial-bug {
+  background-image: radial-gradient(
+    ellipse 100% 75% at center,
+    #cac65f 0%,
+    white 70%
+  );
+}
+
+@utility bg-radial-normal {
+  background-image: radial-gradient(
+    ellipse 100% 75% at center,
+    #9fa991 0%,
+    white 70%
+  );
+}
+
+@utility bg-radial-electric {
+  background-image: radial-gradient(
+    ellipse 100% 75% at center,
+    #ffe674 0%,
+    white 70%
+  );
+}
+
+@utility bg-radial-ground {
+  background-image: radial-gradient(
+    ellipse 100% 75% at center,
+    #e6bb7f 0%,
+    white 70%
+  );
+}
+
+@utility bg-radial-fairy {
+  background-image: radial-gradient(
+    ellipse 100% 75% at center,
+    #ff9f9f 0%,
+    white 70%
+  );
+}
+
+@utility bg-radial-fighting {
+  background-image: radial-gradient(
+    ellipse 100% 75% at center,
+    #ca6262 0%,
+    white 70%
+  );
+}
+
+@utility bg-radial-psychic {
+  background-image: radial-gradient(
+    ellipse 100% 75% at center,
+    #ec8bc7 0%,
+    white 70%
+  );
+}
+
+@utility bg-radial-rock {
+  background-image: radial-gradient(
+    ellipse 100% 75% at center,
+    #969191 0%,
+    white 70%
+  );
+}
+
+@utility bg-radial-ghost {
+  background-image: radial-gradient(
+    ellipse 100% 75% at center,
+    #8464d1 0%,
+    white 70%
+  );
+}
+
+@utility bg-radial-ice {
+  background-image: radial-gradient(
+    ellipse 100% 75% at center,
+    #5be9ff 0%,
+    white 70%
+  );
+}
+
+@utility bg-radial-steel {
+  background-image: radial-gradient(
+    ellipse 100% 75% at center,
+    #887777 0%,
+    white 70%
+  );
+}
+
+@utility bg-radial-flying {
+  background-image: radial-gradient(
+    ellipse 100% 75% at center,
+    #955cb9 0%,
+    white 70%
+  );
+}
+
+@utility bg-radial-dragon {
+  background-image: radial-gradient(
+    ellipse 100% 75% at center,
+    #b4a0ff 0%,
+    white 70%
+  );
+}
+
+/* card info background */
+
+@utility bg-info-grass {
+  background-image: radial-gradient(
+    ellipse 90% 100% at center,
+    #4bba93 20%,
+    white 100%
+  );
+}
+
+@utility bg-info-fire {
+  background-image: radial-gradient(
+    ellipse 90% 100% at center,
+    #ee9045 20%,
+    white 100%
+  );
+}
+
+@utility bg-info-water {
+  background-image: radial-gradient(
+    ellipse 90% 100% at center,
+    #659de3 20%,
+    white 100%
+  );
+}
+
+@utility bg-info-poison {
+  background-image: radial-gradient(
+    ellipse 90% 100% at center,
+    #de8cde 20%,
+    white 100%
+  );
+}
+
+@utility bg-info-bug {
+  background-image: radial-gradient(
+    ellipse 90% 100% at center,
+    #cac65f 20%,
+    white 100%
+  );
+}
+
+@utility bg-info-normal {
+  background-image: radial-gradient(
+    ellipse 90% 100% at center,
+    #9fa991 20%,
+    white 100%
+  );
+}
+
+@utility bg-info-electric {
+  background-image: radial-gradient(
+    ellipse 90% 100% at center,
+    #ffe674 20%,
+    white 100%
+  );
+}
+
+@utility bg-info-ground {
+  background-image: radial-gradient(
+    ellipse 90% 100% at center,
+    #e6bb7f 20%,
+    white 100%
+  );
+}
+
+@utility bg-info-fairy {
+  background-image: radial-gradient(
+    ellipse 90% 100% at center,
+    #ff9f9f 20%,
+    white 100%
+  );
+}
+
+@utility bg-info-fighting {
+  background-image: radial-gradient(
+    ellipse 90% 100% at center,
+    #ca6262 20%,
+    white 100%
+  );
+}
+
+@utility bg-info-psychic {
+  background-image: radial-gradient(
+    ellipse 90% 100% at center,
+    #ec8bc7 20%,
+    white 100%
+  );
+}
+
+@utility bg-info-rock {
+  background-image: radial-gradient(
+    ellipse 90% 100% at center,
+    #969191 20%,
+    white 100%
+  );
+}
+
+@utility bg-info-ghost {
+  background-image: radial-gradient(
+    ellipse 90% 100% at center,
+    #8464d1 20%,
+    white 100%
+  );
+}
+
+@utility bg-info-ice {
+  background-image: radial-gradient(
+    ellipse 90% 100% at center,
+    #5be9ff 20%,
+    white 100%
+  );
+}
+
+@utility bg-info-steel {
+  background-image: radial-gradient(
+    ellipse 90% 100% at center,
+    #887777 20%,
+    white 100%
+  );
+}
+
+@utility bg-info-flying {
+  background-image: radial-gradient(
+    ellipse 90% 100% at center,
+    #955cb9 20%,
+    white 100%
+  );
+}
+
+@utility bg-info-dragon {
+  background-image: radial-gradient(
+    ellipse 90% 100% at center,
+    #b4a0ff 20%,
+    white 100%
+  );
+}
