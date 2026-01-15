@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import StatBar from "../components/StatBar";
 import { ArrowLeft } from "lucide-react";
+import Loader from "../components/Loader";
+import ThemeToggle from "../components/ThemeToggle.jsx";
 
 function PokemonInfo() {
   const typeColors = {
@@ -86,10 +88,8 @@ function PokemonInfo() {
 
   if (!pokemon) {
     return (
-      <div className="w-full min-h-screen bg-linear-to-r from-pokedex-yellow to-pokedex-blue flex flex-col items-center p-4 pt-16 lg:pt-0 gap-y-10">
-        <div className="w-full max-w-6xl mx-auto rounded-[50px] bg-[#F8F8F8]/50 shadow-md border border-white p-4 lg:px-12 flex flex-col">
-          <p className="text-[#373737] font-bold text-xl">Carregando...</p>
-        </div>
+      <div className="w-full min-h-screen bg-linear-to-r flex justify-center from-pokedex-yellow to-pokedex-blue dark:from-[#3F3618] dark:to-[#121D2F] pt-16">
+        <Loader />
       </div>
     );
   }
@@ -103,27 +103,34 @@ function PokemonInfo() {
 
   return (
     //fundo padrão
-    <div className="w-full min-h-screen bg-linear-to-r from-pokedex-yellow to-pokedex-blue flex flex-col items-center p-4 pt-16 lg:pt-0 gap-y-4">
+    <div className="w-full min-h-screen bg-linear-to-r from-pokedex-yellow to-pokedex-blue dark:from-[#3F3618] dark:to-[#121D2F] flex flex-col items-center p-4 pt-16 lg:pt-0 gap-y-4">
       <div className="w-full max-w-3xl flex flex-col gap-y-4 lg:gap-y-6">
-        <button
-          onClick={() => navigate(-1)}
-          className="self-start mt-6 bg-linear-to-r from-pokedex-yellow to-pokedex-blue border-2 border-[#5D5D5D] text-[#373737] rounded-full flex p-3 gap-4"
-        >
-          <ArrowLeft /> Voltar para Galeria
-        </button>
+        <div className="w-full flex justify-between items-center">
+          <button
+            onClick={() => navigate(-1)}
+            className="self-start mt-6 bg-linear-to-r from-pokedex-yellow to-pokedex-blue dark:from-[#3F3618] dark:to-[#121D2F] border-2 border-[#5D5D5D] text-[#373737] dark:text-slate-200 dark:border-white/20 cursor-pointer rounded-full flex p-3 gap-4"
+          >
+            <ArrowLeft /> Voltar para Galeria
+          </button>
+          <div className="self-end">
+            <ThemeToggle />
+          </div>
+        </div>
         {/*borda gradiente */}
         <div
           className={`relative h-full w-full flex flex-col rounded-3xl ${gradientClass} p-1 shadow-2xl`}
         >
           {/*fundo branco do card */}
-          <div className="w-full flex-1 flex flex-col rounded-[20px] overflow-hidden bg-white">
+          <div className="w-full flex-1 flex flex-col rounded-[20px] overflow-hidden bg-white dark:bg-[#1E293B]/70">
             {/*bg gradiente*/}
-            <div className={`w-full flex flex-col px-4 ${bgClass}`}>
+            <div
+              className={`w-full flex flex-col px-4 ${bgClass} dark:bg-none`}
+            >
               {/*infos dentro do card */}
-              <span className="absolute top-6 left-6 text-xl font-bold text-[#5D5D5D]">
+              <span className="absolute top-6 left-6 text-xl font-bold text-[#5D5D5D] dark:text-slate-200">
                 #{id}
               </span>
-              <span className="absolute top-12 left-6 font-bold text-[#373737] text-xl lowercase first-letter:uppercase">
+              <span className="absolute top-12 left-6 font-bold text-[#373737] dark:text-slate-300 text-xl lowercase first-letter:uppercase">
                 {/*capitalize não funcionou por algum motivo */}
                 {pokemon.name}
               </span>
@@ -150,10 +157,10 @@ function PokemonInfo() {
             {/*info fisicas*/}
             <div className="flex flex-col lg:flex-row">
               <div className="px-4 py-6 flex flex-col gap-y-2 lg:flex-1">
-                <span className="font-semibold capitalize mb-2 text-[#5D5D5D] text-xl">
+                <span className="font-semibold capitalize mb-2 text-[#5D5D5D] dark:text-slate-200 text-xl">
                   Informações Físicas
                 </span>
-                <div className="w-full bg-[#E8E8E8] font-medium text-[#5D5D5D] rounded-lg p-2 flex justify-between">
+                <div className="w-full bg-[#E8E8E8] font-medium text-[#5D5D5D]  rounded-lg p-2 flex justify-between">
                   Altura
                   <span className="font-bold">{pokemon.height / 10} m</span>
                 </div>
@@ -164,7 +171,7 @@ function PokemonInfo() {
               </div>
               {/*habilidades*/}
               <div className="px-4 flex flex-col gap-y-2 lg:flex-1 lg:py-6">
-                <span className="font-semibold capitalize mb-2 text-[#5D5D5D] text-xl">
+                <span className="font-semibold capitalize mb-2 text-[#5D5D5D] dark:text-slate-200 text-xl">
                   Habilidades
                 </span>
                 <div className="flex flex-wrap gap-2">
@@ -181,11 +188,11 @@ function PokemonInfo() {
             </div>
             {/*estatisticas de batalha*/}
             <div className="px-4 pt-6 lg:pt-3 pb-4 flex flex-col gap-y-2">
-              <span className="font-semibold capitalize mb-2 text-[#5D5D5D] text-xl">
+              <span className="font-semibold capitalize mb-2 text-[#5D5D5D] dark:text-slate-200 text-xl">
                 Estatísticas de Batalha
               </span>
               <div>
-                <div className="flex justify-between mb-2 text-[#5D5D5D]">
+                <div className="flex justify-between mb-2 text-[#5D5D5D] dark:text-slate-300">
                   <span>HP</span> {/* nome */}
                   <span className="font-bold">
                     {pokemon.stats[0].base_stat}
@@ -198,7 +205,7 @@ function PokemonInfo() {
                 />
               </div>
               <div>
-                <div className="flex justify-between mb-2 text-[#5D5D5D]">
+                <div className="flex justify-between mb-2 text-[#5D5D5D] dark:text-slate-300">
                   <span>Ataque</span> {/* nome */}
                   <span className="font-bold">
                     {pokemon.stats[1].base_stat}
@@ -211,7 +218,7 @@ function PokemonInfo() {
                 />
               </div>
               <div>
-                <div className="flex justify-between mb-2 text-[#5D5D5D]">
+                <div className="flex justify-between mb-2 text-[#5D5D5D] dark:text-slate-300">
                   <span>Defesa</span> {/* nome */}
                   <span className="font-bold">
                     {pokemon.stats[2].base_stat}
@@ -224,7 +231,7 @@ function PokemonInfo() {
                 />
               </div>
               <div>
-                <div className="flex justify-between mb-2 text-[#5D5D5D]">
+                <div className="flex justify-between mb-2 text-[#5D5D5D] dark:text-slate-300">
                   <span>Ataque Especial</span> {/* nome */}
                   <span className="font-bold">
                     {pokemon.stats[3].base_stat}
@@ -237,7 +244,7 @@ function PokemonInfo() {
                 />
               </div>
               <div>
-                <div className="flex justify-between mb-2 text-[#5D5D5D]">
+                <div className="flex justify-between mb-2 text-[#5D5D5D] dark:text-slate-300">
                   <span>Defesa Especial</span> {/* nome */}
                   <span className="font-bold">
                     {pokemon.stats[4].base_stat}
@@ -250,7 +257,7 @@ function PokemonInfo() {
                 />
               </div>
               <div>
-                <div className="flex justify-between mb-2 text-[#5D5D5D]">
+                <div className="flex justify-between mb-2 text-[#5D5D5D] dark:text-slate-300">
                   <span>Velocidade</span> {/* nome */}
                   <span className="font-bold">
                     {pokemon.stats[5].base_stat}

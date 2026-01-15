@@ -79,11 +79,11 @@ function PokemonCard({ id, name, types, image }) {
     <div
       className={`relative h-full w-full flex flex-col rounded-3xl ${gradientClass} p-1`}
     >
-      <div className="w-full flex-1 flex flex-col rounded-[20px] overflow-hidden bg-white">
+      <div className="w-full flex-1 flex flex-col rounded-[20px] overflow-hidden bg-white dark:bg-[#1E293B]/70">
         <div
-          className={`w-full flex-1 flex flex-col rounded-[20px] overflow-hidden px-4 py-4 ${bgClass}`}
+          className={`w-full flex-1 flex flex-col rounded-[20px] overflow-hidden px-4 py-4 ${bgClass} dark:bg-none`}
         >
-          <span className="absolute top-6 left-3 text-md font-bold text-slate-400">
+          <span className="absolute top-6 left-3 text-md font-bold text-slate-400 dark:text-slate-300">
             #{id}
           </span>
           <div className="absolute top-6 right-3 flex gap-1">
@@ -109,7 +109,7 @@ function PokemonCard({ id, name, types, image }) {
           </button>
         </div>
         <div className="bg-transparent px-4 pb-5">
-          <h3 className="text-center font-semibold text-[#5d5d5d] text-lg capitalize">
+          <h3 className="text-center font-semibold text-[#5d5d5d] dark:text-slate-200 text-lg capitalize">
             {name}
           </h3>
         </div>

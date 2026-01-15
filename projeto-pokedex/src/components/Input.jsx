@@ -16,7 +16,11 @@ function Input({ searchPokemon, setSearchPokemon }) {
           outline-none                  
           transition-all                
         focus:border-blue-400
-        focus:ring-blue-100"
+        focus:ring-blue-100
+        dark:border-white/20
+        dark:text-white
+
+      "
       />
       <Search
         size={20}

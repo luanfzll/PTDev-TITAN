@@ -1,10 +1,14 @@
 import Pokedex from "../assets/logo-pokedex.png";
 import Ash from "../assets/ash.png";
 import Input from "./Input.jsx";
+import ThemeToggle from "./ThemeToggle.jsx";
 
 function Header({ searchPokemon, setSearchPokemon }) {
   return (
-    <header className="w-full max-w-6xl mx-auto rounded-[50px] bg-[#F8F8F8]/50 shadow-md border border-white p-4 lg:px-12 flex flex-col">
+    <header className="relative w-full max-w-6xl mx-auto rounded-[50px] bg-[#F8F8F8]/50 dark:bg-black/30 backdrop-blur-md shadow-md dark:shadow-black/50 border border-white dark:border-white/10 p-4 lg:px-12 flex flex-col">
+      <div className="absolute -top-13 right-0 lg:top-8 lg:right-12 z-20">
+        <ThemeToggle />
+      </div>
       <div className="flex justify-center px-4 lg:justify-between items-center">
         <div className="flex flex-col space-y-6">
           <img src={Pokedex} alt="Pokedex" className="lg:w-150" />

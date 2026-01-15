@@ -9,6 +9,8 @@
   }
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* fonte padrão do projeto */
   --font-sans: "Inter", sans-serif;
