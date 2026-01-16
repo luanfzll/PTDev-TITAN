@@ -4,6 +4,8 @@ import StatBar from "../components/StatBar";
 import { ArrowLeft } from "lucide-react";
 import Loader from "../components/Loader";
 import ThemeToggle from "../components/ThemeToggle.jsx";
+import Favorites from "../hooks/useFavorites.jsx";
+import StarButton from "../components/StarButton";
 
 function PokemonInfo() {
   const typeColors = {
@@ -70,6 +72,9 @@ function PokemonInfo() {
   const [pokemon, setPokemon] = useState(null);
   const navigate = useNavigate();
 
+  const { isFavorite, toggleFavorite } = Favorites();
+  const isFav = isFavorite(id);
+
   useEffect(() => {
     async function fetchPokemon() {
       try {
@@ -94,12 +99,31 @@ function PokemonInfo() {
     );
   }
 
+  const handleFavoriteClick = () => {
+    const formattedForFavorite = {
+      id: id,
+      name: pokemon.name,
+      types: pokemon.types.map((t) => t.type.name),
+      image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${parseInt(id)}.png`,
+    };
+    toggleFavorite(formattedForFavorite);
+  };
+
   const primaryType = pokemon.types[0].type.name;
   const gradientClass =
     borderGradients[primaryType] ||
     "bg-gradient-to-b from-gray-300 to-gray-100";
   const bgClass =
     cardBg[primaryType] || "bg-gradient-to-b from-gray-300 to-gray-100";
+
+  const statsConfig = [
+    { label: "HP", color: "#FB3B2D" },
+    { label: "Ataque", color: "#FB3B2D" },
+    { label: "Defesa", color: "#FB3B2D" },
+    { label: "Ataque Especial", color: "#1C74DE" },
+    { label: "Defesa Especial", color: "#1C74DE" },
+    { label: "Velocidade", color: "#FB3B2D" },
+  ];
 
   return (
     //fundo padrão
@@ -134,15 +158,18 @@ function PokemonInfo() {
                 {/*capitalize não funcionou por algum motivo */}
                 {pokemon.name}
               </span>
-              <div className="absolute top-6 right-6 flex gap-1">
-                {pokemon.types.map((item) => (
-                  <span
-                    key={item.type.name}
-                    className={`px-3 py-0.5 lg:px-6 lg:py-2 rounded-full font-bold text-white ${typeColors[item.type.name]} capitalize`}
-                  >
-                    {item.type.name}
-                  </span>
-                ))}
+              <div className="absolute top-6 right-6 flex flex-col items-end gap-3 z-10">
+                <div className="flex gap-1">
+                  {pokemon.types.map((item) => (
+                    <span
+                      key={item.type.name}
+                      className={`px-3 py-0.5 lg:px-6 lg:py-2 rounded-full font-bold text-white ${typeColors[item.type.name]} capitalize`}
+                    >
+                      {item.type.name}
+                    </span>
+                  ))}
+                </div>
+                <StarButton isFavorite={isFav} onClick={handleFavoriteClick} />
               </div>
 
               <div className="flex justify-center pt-8">
@@ -191,84 +218,20 @@ function PokemonInfo() {
               <span className="font-semibold capitalize mb-2 text-[#5D5D5D] dark:text-slate-200 text-xl">
                 Estatísticas de Batalha
               </span>
-              <div>
-                <div className="flex justify-between mb-2 text-[#5D5D5D] dark:text-slate-300">
-                  <span>HP</span> {/* nome */}
-                  <span className="font-bold">
-                    {pokemon.stats[0].base_stat}
-                  </span>{" "}
-                  {/* valor */}
+              {statsConfig.map((stat, index) => (
+                <div key={stat.label}>
+                  <div className="flex justify-between mb-2 text-[#5D5D5D] dark:text-slate-300">
+                    <span>{stat.label}</span>
+                    <span className="font-bold">
+                      {pokemon.stats[index].base_stat}{" "}
+                    </span>
+                  </div>
+                  <StatBar
+                    baseStats={pokemon.stats[index].base_stat}
+                    color={stat.color}
+                  />
                 </div>
-                <StatBar
-                  baseStats={pokemon.stats[0].base_stat}
-                  color="#FB3B2D"
-                />
-              </div>
-              <div>
-                <div className="flex justify-between mb-2 text-[#5D5D5D] dark:text-slate-300">
-                  <span>Ataque</span> {/* nome */}
-                  <span className="font-bold">
-                    {pokemon.stats[1].base_stat}
-                  </span>{" "}
-                  {/* valor */}
-                </div>
-                <StatBar
-                  baseStats={pokemon.stats[1].base_stat}
-                  color="#FB3B2D"
-                />
-              </div>
-              <div>
-                <div className="flex justify-between mb-2 text-[#5D5D5D] dark:text-slate-300">
-                  <span>Defesa</span> {/* nome */}
-                  <span className="font-bold">
-                    {pokemon.stats[2].base_stat}
-                  </span>{" "}
-                  {/* valor */}
-                </div>
-                <StatBar
-                  baseStats={pokemon.stats[2].base_stat}
-                  color="#FB3B2D"
-                />
-              </div>
-              <div>
-                <div className="flex justify-between mb-2 text-[#5D5D5D] dark:text-slate-300">
-                  <span>Ataque Especial</span> {/* nome */}
-                  <span className="font-bold">
-                    {pokemon.stats[3].base_stat}
-                  </span>{" "}
-                  {/* valor */}
-                </div>
-                <StatBar
-                  baseStats={pokemon.stats[3].base_stat}
-                  color="#1C74DE"
-                />
-              </div>
-              <div>
-                <div className="flex justify-between mb-2 text-[#5D5D5D] dark:text-slate-300">
-                  <span>Defesa Especial</span> {/* nome */}
-                  <span className="font-bold">
-                    {pokemon.stats[4].base_stat}
-                  </span>{" "}
-                  {/* valor */}
-                </div>
-                <StatBar
-                  baseStats={pokemon.stats[4].base_stat}
-                  color="#1C74DE"
-                />
-              </div>
-              <div>
-                <div className="flex justify-between mb-2 text-[#5D5D5D] dark:text-slate-300">
-                  <span>Velocidade</span> {/* nome */}
-                  <span className="font-bold">
-                    {pokemon.stats[5].base_stat}
-                  </span>{" "}
-                  {/* valor */}
-                </div>
-                <StatBar
-                  baseStats={pokemon.stats[5].base_stat}
-                  color="#FB3B2D"
-                />
-              </div>
+              ))}
             </div>
             {/* total */}
             <div className=" px-4 mb-8">
