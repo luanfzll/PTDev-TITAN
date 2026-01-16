@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import PokemonCard from "./components/PokemonCard";
 import Loader from "./components/Loader";
 import Favorites from "./hooks/useFavorites";
+import { Star } from "lucide-react";
 
 function App() {
   const [pokemons, setPokemons] = useState([]);
@@ -10,7 +11,7 @@ function App() {
   useEffect(() => {
     async function fetchPokemons() {
       const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon?limit=100"
+        "https://pokeapi.co/api/v2/pokemon?limit=386"
       );
       const data = await response.json();
 
